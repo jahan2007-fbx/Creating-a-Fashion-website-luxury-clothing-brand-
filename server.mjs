@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
-const PAGE = "myoo-final-final-finalae002.html";
+const PAGE = "index.html";
 let PORT = Number(process.env.PORT || 4173);
 let MODEL = process.env.OPENAI_IMAGE_MODEL || "gpt-image-1";
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
@@ -274,7 +274,7 @@ async function handleStatic(request, response, pathname) {
     if (!fileInfo.isFile()) throw new Error("not a file");
     response.writeHead(200, {
       "Content-Type": contentTypeFor(filePath),
-      "Content-Length": fileInfo.size,
+      "Content-Length": fileInfosize,
       "Cache-Control": path.extname(filePath) === ".html" ? "no-cache" : "public, max-age=3600",
       "X-Content-Type-Options": "nosniff"
     });
