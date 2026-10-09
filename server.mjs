@@ -6,11 +6,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PAGE = "myoo-final-final-finalae002.html";
 let PORT = Number(process.env.PORT || 4173);
-app.get('/generate', (req, res) => {
-  const prompt = req.query.prompt;
-  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
-  res.json({ url: imageUrl });
-});
+let MODEL = process.env.OPENAI_IMAGE_MODEL || "gpt-image-1";
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 const MAX_BODY_BYTES = 96 * 1024 * 1024;
 const MAX_REFERENCES = 8;
